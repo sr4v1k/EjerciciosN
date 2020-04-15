@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+ 
+   
+    <bean id="barometro" class="ar.com.basespring.beans.Barometro"/>
+    
+    <bean id="termometro" class="ar.com.basespring.beans.Termometro"/>
+    
+    <bean id="pluviometro" class="ar.com.basespring.beans.Pluviometro"/>
+
+    <bean id="miInstrumento" class="ar.com.basespring.beans.MiInstrumento"/>
+     
+    <bean id="viento" class="ar.com.basespring.beans.Anemometro"/>
+
+	<bean id="estacionMetereologicaSur" class="ar.com.basespring.beans.EstacionMetereologicaSur">
+		<property name="instrumento" ref="barometro" />
+		<property name="instrumento2" ref="termometro" />
+	</bean>
+ 
+ 	<bean id="estacionMetereologicaNorte" class="ar.com.basespring.beans.EstacionMetereologicaNorte">
+		<constructor-arg ref="termometro"/>
+	</bean>
+	
+	 <bean id="estacionMetereologicaSur2" class="ar.com.basespring.beans.EstacionMetereologicaSur">
+		<property name="instrumento" ref="pluviometro" />
+		<property name="instrumento2" ref="pluviometro" />
+	</bean>
+
+        <bean id="estacionNoreste" class="ar.com.basespring.beans.EstacionNoreste">
+		<constructor-arg ref="miInstrumento"/>
+	</bean>
+ 
+ 	<bean id="estacionOeste" class="ar.com.basespring.beans.EstacionOeste">
+ 		<property name="instrumento" ref="viento"></property>
+ 	</bean>
+</beans>
